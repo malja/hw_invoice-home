@@ -1,0 +1,32 @@
+<table class="table table-hover align-middle">
+  <thead class="table-light text-secondary">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Phone</th>
+      <th scope="col" class="text-end">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @people.present? %>
+      <% @people.each do |person| %>
+        <tr>
+          <td><%= person.full_name %></td>
+          <td><%= person.addresses.first %></td>
+          <td><%= mail_to person.emails.first.email_address, nil, { "data-toggle": "tooltip", "data-placement": "right", "title": "Send email" } if person.emails.first.present? %></td>
+          <td><%= phone_to person.phone_numbers.first.phone_number, nil, { "data-toggle": "tooltip", "data-placement": "right", "title": "Call" } if person.phone_numbers.first.present? %></td>
+          <td class="text-end">
+            <%= action_link "View", "bi-eye", person %>
+            <%= action_link "Delete", "bi-trash", person, { turbo_method: "delete", turbo_confirm: "Are you sure?" } %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="5" class="text-center text-secondary">Your Address Book is empty.</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

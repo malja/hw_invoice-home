@@ -1,0 +1,28 @@
+<table class="table table-hover align-middle">
+  <thead class="table-light text-secondary">
+    <tr>
+      <th>Email Address</th>
+      <th>Comment</th>
+      <th class="text-end">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if emails.present? %>
+      <% emails.each do |email| %>
+        <tr>
+          <td><%= mail_to email.email_address %></td>
+          <td><%= email.comment.truncate(100) %></td>
+          <td class="text-end">
+            <%= action_link 'Edit', "bi-eye", edit_person_email_path(person, email) %>
+            <%= action_link 'Delete', "trash", person_email_path(person, email), { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="3" class="text-center text-secondary">No Emails Found</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="navbar-brand">
+    <%= link_to image_pack_tag("logo.png", :class => "d-inline-block me-2", size: 30) + "Address Book", root_path,
+                class: "link-secondary text-decoration-none align-middle" %>
+  </div>
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbar-content" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar-content">
+    <ul class="navbar-nav ms-auto">
+      <% if current_user.present? %>
+        <li class="nav-item">
+          <%= link_to "App", app_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Account", account_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Logout", logout_path, class: "nav-link" %>
+        </li>
+      <% else %>
+        <li class="nav-item">
+          <%= link_to "Login", login_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign Up", signup_path, class: "nav-link" %>
+        </li>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>

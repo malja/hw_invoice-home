@@ -1,0 +1,40 @@
+<h1><%= @person.first_name %> <%= @person.middle_name if @person.middle_name %> <%= @person.last_name %></h1>
+
+<%= render partial: "form" %>
+
+<section class="mt-5 card">
+  <div class="card-body">
+
+    <h3 class="card-title">Address List</h3>
+
+    <div class="btn-group float-end mb-4">
+      <%= link_to "New Address", new_person_address_path(@person), class: "btn btn-outline-primary" %>
+    </div>
+
+    <%= render partial: "addresses/list", :locals => { person: @person, addresses: @person.addresses } %>
+  </div>
+</section>
+
+<section class="mt-5 card">
+  <div class="card-body">
+    <h3 class="card-title">Emails</h3>
+
+    <div class="btn-group float-end mb-4">
+      <%= link_to "New Email", new_person_email_path(@person), class: "btn btn-outline-primary" %>
+    </div>
+
+    <%= render partial: "emails/list", :locals => { person: @person, emails: @person.emails } %>
+  </div>
+</section>
+
+<section class="mt-5 card">
+  <div class="card-body">
+    <h3 class="card-title">Phone Numbers</h3>
+
+    <div class="btn-group float-end mb-4">
+      <%= link_to "New Phone Number", new_person_phone_number_path(@person), class: "btn btn-outline-primary" %>
+    </div>
+
+    <%= render partial: "phone_numbers/list", :locals => { person: @person, phone_numbers: @person.phone_numbers } %>
+  </div>
+</section>

@@ -1,0 +1,31 @@
+<%= form_for @user do |f| %>
+  <div class="row mb-3">
+    <div class="col">
+      <%= f.label :email, class: "form-label" %>
+      <%= f.text_field :email, class: "form-control" %>
+      <div class="form-text">Email address is used as your login name.</div>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+    <%= f.label :password, class: "form-label" %>
+    <%= f.password_field :password, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+    <%= f.label :password_confirmation, "Confirmation", class: "form-label" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <% if current_user %>
+      <%= f.submit nil, class: "btn btn-primary me-3" %> or <%= link_to "Delete Account", user_path(@user), role: "button", data: { turbo_method: :delete, turbo_confirm: 'Are you sure? Whole address book will be removed as well.' }, class: "btn btn-link text-danger" %>
+    <% else %>
+      <%= f.submit nil, class: "btn btn-primary me-3" %>
+    <% end %>
+  </div>
+<% end %>

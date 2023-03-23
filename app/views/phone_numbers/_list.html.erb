@@ -1,0 +1,28 @@
+<table class="table table-hover align-middle">
+  <thead class="table-light text-secondary">
+    <tr>
+      <th>Phone Number</th>
+      <th>Comment</th>
+      <th class="text-end">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if phone_numbers.present? %>
+      <% phone_numbers.each do |phone_number| %>
+        <tr>
+          <td><%= phone_to phone_number.phone_number %></td>
+          <td><%= phone_number.comment.truncate(100) %></td>
+          <td class="text-end">
+            <%= action_link 'Edit', "bi-eye", edit_person_phone_number_path(person, phone_number) %>
+            <%= action_link 'Delete', "bi-trash", person_phone_number_path(person, phone_number), { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="3" class="text-center text-secondary">No Phone Numbers Found</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
