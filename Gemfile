@@ -47,6 +47,8 @@ gem "bootsnap", require: false
 
 gem "pg"
 
+gem "jwt"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
