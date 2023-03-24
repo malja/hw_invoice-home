@@ -5,13 +5,15 @@ FactoryBot.define do
 		zip_code { Faker::Address.zip }
 		country { Faker::Address.country_code }
 
-		association :person, factory: :person
+		trait :with_person do
+			association :person, factory: :person
+		end
 
 		trait :has_state do
 			state { Faker::Address.state }
 		end
 
 		factory :address_with_state, traits: [:has_state]
-		factory :address_with_all_attributes, traits: [:has_state]
+		factory :address_with_all_attributes, traits: [:has_state, :with_person]
 	end
 end

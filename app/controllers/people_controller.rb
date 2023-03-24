@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
 
 	def set_person
 		@person = current_user.people.find_by_id(params[:id])
-		redirect_to app_path unless @person
+		redirect_to app_path, alert: 'Person not found.' unless @person
 	end
 
 	def person_params

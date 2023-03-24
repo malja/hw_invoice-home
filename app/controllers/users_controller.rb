@@ -13,10 +13,8 @@ class UsersController < ApplicationController
 
 		if @user.save
 			UserMailer.welcome_email(@user).deliver_later
-			logger.info("user created #{@user.email}")
 			redirect_to login_path, notice: 'User was successfully created.'
 		else
-			logger.error("user not created #{@user.errors.full_messages}")
 			flash.now[:alert] = @user.errors.full_messages.first
 			render :new, status: :unprocessable_entity
 		end

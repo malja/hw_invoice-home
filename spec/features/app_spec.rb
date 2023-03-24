@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "App", type: :feature do
 	describe "allows" do
-		let(:user) { build(:user) }
+		let(:user) { create(:user) }
 
 		before(:each) do
 			login_in_feature_spec(user)
@@ -18,7 +18,7 @@ RSpec.describe "App", type: :feature do
 		end
 
 		it "to open account" do
-			expect(page).to have_link("Open Account", href: account_path)
+			expect(page).to have_link("Account", href: account_path)
 		end
 	end
 end

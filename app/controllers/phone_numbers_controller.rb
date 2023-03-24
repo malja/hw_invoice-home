@@ -38,7 +38,8 @@ class PhoneNumbersController < ApplicationController
 	private
 
 	def set_person
-		@person = current_user.find(params[:person_id])
+		@person = current_user.people.find_by_id(params[:person_id])
+		redirect_to app_path, alert: 'Person not found.' unless @person
 	end
 
 	def set_phone_number

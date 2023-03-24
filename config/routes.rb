@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 	root to: 'pages#home'
 
 	namespace :api do
-		# I don't want users to be created/deleted through the API
-		resources :users, only: [:index, :update]
+		# I don't want users to be listed/created/deleted through the API
+		resources :users, only: [:update]
 		resources :auth, only: [:create, :destroy]
 		resources :people, only: [:index, :show, :create, :update, :destroy] do
 			resources :addresses, only: [:index, :show, :create, :update, :destroy]

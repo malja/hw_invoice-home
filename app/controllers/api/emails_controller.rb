@@ -47,6 +47,6 @@ class Api::EmailsController < Api::ApiController
 	end
 
 	def email_params
-		params.permit(:email_address, :comment)
+		params.require(:email).permit(:email_address, :comment)
 	end
 end

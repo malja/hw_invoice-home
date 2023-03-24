@@ -3,7 +3,7 @@ FactoryBot.define do
 		salutation { Person.salutations.keys.sample }
 		first_name { Faker::Name.first_name }
 		last_name { Faker::Name.last_name }
-		ssn { Faker::Number.number(digits: 9) }
+		ssn { Array.new(9) { Faker::Number.non_zero_digit }.join.to_i  }
 
 		trait :has_middle_name do
 			middle_name { Faker::Name.middle_name }

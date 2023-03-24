@@ -37,12 +37,10 @@ class Person < ApplicationRecord
 		errors.add("must be a number") unless ssn_as_string.to_i.is_a? Numeric
 
 		if ssn_as_string.length != 9
-			puts("SSN length is not 9")
 			errors.add(:ssn, "is the wrong length (should be 9 characters)")
 		end
 
 		if ssn_as_string[0..2] === "000" || ssn_as_string[3..4] === "00" || ssn_as_string[5..8] === "0000"
-			puts("SSN has invalid area, group or serial number")
 			errors.add(:ssn, "is invalid")
 		end
 	end

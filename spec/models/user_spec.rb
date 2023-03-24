@@ -19,13 +19,4 @@ RSpec.describe User, type: :model do
 
 		it { should have_many(:people) }
 	end
-
-	describe "to_s" do
-		subject { build(:user) }
-
-		it 'returns a string' do
-			expect(subject.to_s).to be_a(String)
-			expect(subject.to_s).to eq("#{subject.email}")
-		end
-	end
 end

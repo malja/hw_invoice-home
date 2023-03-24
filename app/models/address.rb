@@ -12,7 +12,7 @@ class Address < ApplicationRecord
 	attribute :state, :string
 	attribute :country, :string
 
-	def to_s
+	def full_address
 		"#{street}, #{town}, #{state}, #{zip_code}, #{country}"
 	end
 end

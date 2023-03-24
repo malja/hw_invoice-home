@@ -47,6 +47,6 @@ class Api::PhoneNumbersController < Api::ApiController
 	end
 
 	def phone_number_params
-		params.permit(:phone_number, :comment)
+		params.require(:phone_number).permit(:phone_number, :comment)
 	end
 end

@@ -41,6 +41,6 @@ class Api::PeopleController < Api::ApiController
 	end
 
 	def person_params
-		params.permit(:salutation, :first_name, :middle_name, :last_name, :ssn, :birth_date, :comment)
+		params.require(:person).permit(:salutation, :first_name, :middle_name, :last_name, :ssn, :birth_date, :comment)
 	end
 end

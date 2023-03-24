@@ -18,12 +18,12 @@ RSpec.describe Address, type: :model do
 		it { should belong_to(:person) }
 	end
 
-	describe "to_s" do
+	describe ".full_address" do
 		subject { build(:address_with_all_attributes) }
 
 		it 'returns a string' do
-			expect(subject.to_s).to be_a(String)
-			expect(subject.to_s).to eq("#{subject.street}, #{subject.town}, #{subject.state}, #{subject.zip_code}, #{subject.country}")
+			expect(subject.full_address).to be_a(String)
+			expect(subject.full_address).to eq("#{subject.street}, #{subject.town}, #{subject.state}, #{subject.zip_code}, #{subject.country}")
 		end
 	end
 end

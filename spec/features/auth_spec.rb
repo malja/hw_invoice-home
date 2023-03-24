@@ -73,7 +73,7 @@ RSpec.feature "Auth", type: :feature do
 		end
 
 		context "when user is not logged in" do
-			let(:user) { create(:user) }
+			subject{ build(:user_with_people) }
 
 			it "renders register page" do
 				visit signup_path
@@ -83,9 +83,9 @@ RSpec.feature "Auth", type: :feature do
 			it "allows to register" do
 				visit signup_path
 
-				fill_in "Email", with: user.email
-				fill_in "Password", with: user.password
-				fill_in "Confirmation", with: user.password
+				fill_in "Email", with: subject.email
+				fill_in "Password", with: subject.password
+				fill_in "Confirmation", with: subject.password
 				find("input[type='submit']").click
 
 				expect(page).to have_content("User was successfully created.")

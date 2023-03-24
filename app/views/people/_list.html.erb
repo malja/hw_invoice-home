@@ -14,7 +14,7 @@
       <% @people.each do |person| %>
         <tr>
           <td><%= person.full_name %></td>
-          <td><%= person.addresses.first %></td>
+          <td><%= person.addresses.first.full_address %></td>
           <td><%= mail_to person.emails.first.email_address, nil, { "data-toggle": "tooltip", "data-placement": "right", "title": "Send email" } if person.emails.first.present? %></td>
           <td><%= phone_to person.phone_numbers.first.phone_number, nil, { "data-toggle": "tooltip", "data-placement": "right", "title": "Call" } if person.phone_numbers.first.present? %></td>
           <td class="text-end">

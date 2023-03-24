@@ -11,7 +11,7 @@ RSpec.describe AddressesController, type: :request do
 		end
 
 		context "when user is logged in" do
-			let(:user) { create(:user) }
+			let(:user) { create(:user_with_people) }
 
 			before(:each) do
 				login(user)
@@ -27,7 +27,7 @@ RSpec.describe AddressesController, type: :request do
 
 			context "and person exists" do
 				it "renders new address page" do
-					get new_person_address_path(person_id: user.people.first.id)
+					get new_person_address_path(user.people.first)
 
 					expect(response).to render_template(:new)
 				end

@@ -27,6 +27,7 @@ RSpec.configure do |config|
 	config.include FactoryBot::Syntax::Methods
 	config.include LoginHelper, type: :request
 	config.include FeatureHelper, :type => :feature
+	config.include ApiHelper, type: :request
 end
 
 # Checks for pending migrations and applies them before tests are run.

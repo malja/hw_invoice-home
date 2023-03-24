@@ -14,4 +14,8 @@ class Api::ApiController < ActionController::API
 			render json: { errors: e.message }, status: :unauthorized
 		end
 	end
+
+	rescue_from ActiveRecord::RecordNotFound do |e|
+		render json: { errors: [e.message] }, status: :not_found
+	end
 end

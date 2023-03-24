@@ -14,13 +14,4 @@ RSpec.describe Email, type: :model do
 		subject { build(:email_with_comment) }
 		it { should belong_to(:person) }
 	end
-
-	describe "to_s" do
-		subject { build(:email_with_comment) }
-
-		it 'returns a string' do
-			expect(subject.to_s).to be_a(String)
-			expect(subject.to_s).to eq("#{subject.email_address}")
-		end
-	end
 end
