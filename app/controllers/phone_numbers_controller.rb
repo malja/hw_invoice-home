@@ -38,7 +38,7 @@ class PhoneNumbersController < ApplicationController
 	private
 
 	def set_person
-		@person = Person.find(params[:person_id])
+		@person = current_user.find(params[:person_id])
 	end
 
 	def set_phone_number
